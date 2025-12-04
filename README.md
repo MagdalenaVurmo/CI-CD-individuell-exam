@@ -72,4 +72,4 @@ Du hittar de user stories som har implementerats nedan och som de ska skrivas te
 
 ## Inlämning
 
-Lämna in länk till Githubrepo med koden och tester på Azomo senast **fredagen 12/12 kl 23:59**.
+Lämna in länk till Githubrepo med projektet samt en länk till en inspelning (max 10 min) där du går igenom dina tester med fokus på hur du uppfyller alla acceptanskriterier och hur dessa reflekteras i dina tester på Azomo senast **fredagen 12/12 kl 23:59**.
