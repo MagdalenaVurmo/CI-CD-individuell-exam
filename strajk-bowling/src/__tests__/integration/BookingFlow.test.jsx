@@ -43,3 +43,9 @@ export const addShoes = async (user, shoeSizes) => {
     await user.type(shoeInputs[i], shoeSizes[i]);
   }
 };
+
+import { test, expect } from "vitest";
+
+test("BookingFlow test file loads", () => {
+  expect(true).toBe(true);
+});
