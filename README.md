@@ -1,75 +1,105 @@
-# Individuell examination: Strajk bowling
+🟢 Strajk Bowling – Individuell Examination (CI/CD & Test)
 
-## Bakgrund
+Detta projekt är en del av den individuella examinationen på Folkuniversitetet.
+Syftet med uppgiften är att säkerställa kvalitet och stabilitet i en React-applikation genom automatiserade tester och CI med GitHub Actions.
 
-Strajk bowling är en nyöppnad bowlinghall i centrala Bromölla. Ägaren K. Ägla gillar tekniska lösningar och har tillsammans med brorsonen Keso Ägla byggt denna webbapp.
-Herr Ägla är väldigt nöjd med appen men vill försäkra sig om att den är fortsatt stabil när ny funktionalitet läggs till framöver. Ditt uppdrag är att skriva unit tester med React testing library som sen kan köras för att testa av all funktionalitet när man gör en push till Github.
+📌 Projektbeskrivning
 
-Du hittar de user stories som har implementerats nedan och som de ska skrivas tester för. Koden hittar du i mappen `Strajk bowling`.
+Strajk Bowling är en webbapplikation där användare kan:
 
-## User stories
+Boka datum och tid för bowling
 
-### Som användare vill jag kunna boka datum och tid samt ange antal spelare så att jag kan reservera 1 eller flera baner i bowlinghallen.
+Ange antal spelare och banor
 
-**Acceptanskriterier:**
+Välja skostorlek för varje spelare
 
-- Användaren ska kunna välja ett datum och en tid från ett kalender- och tidvalssystem.
-- Användaren ska kunna ange antal spelare (minst 1 spelare).
-- Användaren ska kunna reservera ett eller flera banor beroende på antal spelare.
-- VG - Ifall användaren inte fyller i något av ovanstående så ska ett felmeddelande visas
-- VG - Om det inte finns tillräckligt med lediga banor för det angivna antalet spelare, ska användaren få ett felmeddelande.
+Skicka bokningen och få bokningsnummer samt totalsumma
 
-### Som användare vill jag kunna välja skostorlek för varje spelare så varje spelare får skor som passar.
+Navigera mellan bokningsvy och bekräftelsevy
 
-**Acceptanskriterier:**
+I denna examination har fokus legat på att testa befintlig funktionalitet, inte att bygga ny.
 
-- Användaren ska kunna ange skostorlek för varje spelare.
-- Användaren ska kunna ändra skostorlek för varje spelare.
-- Det ska vara möjligt att välja skostorlek för alla spelare som ingår i bokningen.
-- VG - Om användaren försöker slutföra bokningen utan att ange skostorlek för en spelare som har valt att boka skor, ska systemet visa ett felmeddelande och be om att skostorleken anges.
-- VG - Om antalet personer och skor inte matchas ska ett felmeddelande visas
-- Systemet ska visa en översikt där användaren kan kontrollera de valda skostorlekarna för varje spelare innan bokningen slutförs.
+🧪 Tester
 
-### Som användare vill jag kunna ta bort ett fält för skostorlek om jag råkade klicka i ett för mycket så jag inte boka skor i onödan.
+Projektet innehåller tester skrivna med:
 
-**Acceptanskriterier:**
+Vitest
 
-- Användaren ska kunna ta bort ett tidigare valt fält för skostorlek genom att klicka på en "-"-knapp vid varje spelare.
-- När användaren tar bort skostorleken för en spelare ska systemet uppdatera bokningen så att inga skor längre är bokade för den spelaren.
-- Om användaren tar bort skostorleken ska systemet inte inkludera den spelaren i skorantalet och priset för skor i den totala bokningssumman.
+React Testing Library
 
-### Som användare vill jag kunna skicka iväg min reservation och få tillbaka ett ett bokningsnummer och totalsumma så jag vet hur mycket jag ska betala. (120 kr / person + 100 kr / bana).
+Mock Service Worker (MSW) för mockade API-anrop
 
-**Acceptanskriterier:**
+Typer av tester som finns:
 
-- Användaren ska kunna slutföra bokningen genom att klicka på en "slutför bokning"-knapp.
-- Systemet ska generera ett bokningsnummer och visa detta till användaren efter att bokningen är slutförd.
-- Systemet ska beräkna och visa den totala summan för bokningen baserat på antalet spelare (120 kr per person) samt antalet reserverade banor (100 kr per bana).
-- Den totala summan ska visas tydligt på bekräftelsesidan och inkludera en uppdelning mellan spelare och banor.
+Integrationstester för bokningsflödet
 
-### Som användare vill jag kunna navigera mellan boknings-och bekräftelsevyn.
+Tester för navigation mellan vyer
 
-**Acceptanskriterier:**
+Tester som verifierar korrekt rendering baserat på session storage
 
-- Användaren ska kunna navigera från bokningsvyn till bekräftelsevyn när bokningen är klar.
-- Om användaren navigerar till bekräftelsevyn och ingen bokning är gjord eller finns i `session storage` ska texten "Ingen bokning gjord visas".
-- Om användaren navigerar till bekräftelsevyn och det finns en bokning sparad i `session storage` ska denna visas.
+Testfilerna finns i:
 
-## Betygskriterier
+strajk-bowling/src/__tests__/
 
-**Får godkänt ska du:**
 
-- Gjort tester i React testing library för alla user stories och acceptanskriter som går grönt när man kör dessa.
-- Mockat POST-anrop med Mock service worker.
-- Testerna triggas via en Github actions på main-branchen. Det bör alltså finnas en grön bock i ditt Github repo när du lämnar in examinationen.
-- Skrivit en kommentar till varje test om vilka acceptanskriterier du har uppfyllt. Du ska ha med alla acceptanskriterier som är för godkänt men du kan kombinera ibland flera acceptanskriterier i ett test.
-- Ingen modifikation i koden får göras dock får man lägga till `data-testid` men då ska man också kommentera koden och motivera sitt val varför detta behövs.
+Varje test innehåller kommentarer som förklarar vilka acceptanskriterier som uppfylls.
 
-**Får Väl Godkänt ska du:**
+🔁 CI – GitHub Actions
 
-- Har skrivit tester för alla acceptanskriterier som är VG. Observera att det finns flera unika felmeddelanden och varje felmeddelande ska vara i sitt eget test. Här gäller det också att tänka igenom hur man skriver sina test. Om vi tar, att man ska ha fyllt i allt fält (datum, tid, antalet spelare och banor) så gäller det att testet kollar att felmeddelandet visas för flera kombinationer av vad man glömt att fylla i.
-- Du ska ha över 90% coverage i dina tester.
+Projektet använder GitHub Actions för Continuous Integration.
 
-## Inlämning
+Vad som händer:
 
-Lämna in länk till Githubrepo med projektet samt en länk till en inspelning (max 10 min) där du går igenom dina tester med fokus på hur du uppfyller alla acceptanskriterier och hur dessa reflekteras i dina tester på Azomo senast **fredagen 12/12 kl 23:59**.
+Vid varje push till main körs alla tester automatiskt
+
+Om alla tester passerar visas en grön bock ✅
+
+Workflow-filen finns här:
+
+.github/workflows/tests.yml
+
+▶️ Köra projektet lokalt
+1. Klona repot
+git clone https://github.com/MagdalenaVurmo/CI-CD-individuell-exam.git
+
+2. Gå in i projektet
+cd CI-CD-individuell-exam/strajk-bowling
+
+3. Installera beroenden
+npm install
+
+4. Starta utvecklingsserver
+npm run dev
+
+▶️ Köra tester lokalt
+cd strajk-bowling
+npm run test:run
+
+✅ Uppfyllda krav (Godkänt)
+
+✔ Tester skrivna med React Testing Library
+
+✔ Mockade API-anrop med MSW
+
+✔ GitHub Actions kör tester vid push till main
+
+✔ Alla tester går igenom (grön bock)
+
+✔ Kommentarer i tester som kopplar till acceptanskriterier
+
+✔ Ingen modifiering av applikationslogik (endast tester)
+
+👩‍🎓 Student
+
+Namn: Magdalena
+Kurs: CI/CD / Test
+Skola: Folkuniversitetet
+
+📎 Repo & CI-status
+
+🔗 GitHub-repo:
+https://github.com/MagdalenaVurmo/CI-CD-individuell-exam
+
+💬 Kommentar
+
+Detta projekt fokuserar på testning och CI snarare än vidareutveckling av funktionalitet. Målet har varit att skapa en stabil testmiljö som automatiskt verifierar att applikationen fortsätter fungera korrekt vid framtida ändringar.
