@@ -1,105 +1,238 @@
-🟢 Strajk Bowling – Individuell Examination (CI/CD & Test)
+🎳 Strajk Bowling – Individuell Examination (CI/CD & Test)
 
-Detta projekt är en del av den individuella examinationen på Folkuniversitetet.
-Syftet med uppgiften är att säkerställa kvalitet och stabilitet i en React-applikation genom automatiserade tester och CI med GitHub Actions.
+Detta repository innehåller min lösning på den individuella examinationen i CI/CD och testning vid Folkuniversitetet.
 
-📌 Projektbeskrivning
+Fokus för uppgiften:
 
-Strajk Bowling är en webbapplikation där användare kan:
+automatiserade tester med React Testing Library
 
-Boka datum och tid för bowling
+mockade API-anrop med MSW
 
-Ange antal spelare och banor
+Continuous Integration via GitHub Actions
 
-Välja skostorlek för varje spelare
+✅ Uppfyllda krav (översikt)
 
-Skicka bokningen och få bokningsnummer samt totalsumma
+✔ Tester skrivna i React Testing Library + Vitest
 
-Navigera mellan bokningsvy och bekräftelsevy
+✔ MSW används för att mocka POST-anrop
 
-I denna examination har fokus legat på att testa befintlig funktionalitet, inte att bygga ny.
+✔ Tester för samtliga user stories
+
+✔ Tester för alla VG-acceptanskriterier
+
+✔ Separata tester för varje felmeddelande
+
+✔ GitHub Actions kör tester automatiskt vid push till main
+
+✔ Grön CI-status på main
+
+🧪 Tester & struktur
+
+Testfiler finns i:
+
+strajk-bowling/src/__tests__/
+
+
+Tester är strukturerade per user story
+
+Varje test innehåller kommentarer som kopplar till acceptanskriterier
+
+Hjälpfunktioner används för att undvika duplicerad testkod
+
+🔁 Continuous Integration
+
+GitHub Actions kör alla tester automatiskt
+
+Workflow-fil:
+
+.github/workflows/tests.yml
+
+
+Grön bock visar att samtliga tester passerar
+
+▶️ Köra lokalt
+cd strajk-bowling
+npm install
+npm run dev
+
+npm run test:run
+
+👩‍🎓 Student
+
+Namn: Magdalena 
+Kurs: CI/CD & Test – Individuell Examination
+Skola: Folkuniversitetet
+
+🔗 Repository
+
+👉 https://github.com/MagdalenaVurmo/CI-CD-individuell-exam
+
+💡 Notering
+
+GitHub Actions visar endast tiden från det att workflowet skapades och representerar inte den totala arbetstiden.
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+🎳 Strajk Bowling – Individuell Examination (CI/CD & Test)
+
+Detta repository innehåller min lösning på den individuella examinationen i CI/CD och testning vid Folkuniversitetet.
+
+Fokus för uppgiften har varit att:
+
+skriva automatiserade tester för befintlig funktionalitet
+
+mocka backend-anrop
+
+sätta upp Continuous Integration med GitHub Actions
+
+📦 Projektöversikt
+
+Strajk Bowling är en React-applikation där användaren kan:
+
+boka datum och tid
+
+ange antal spelare och banor
+
+välja skostorlek för varje spelare
+
+ta bort skoval om det behövs
+
+slutföra bokningen och få bokningsnummer + totalsumma
+
+navigera mellan bokningsvy och bekräftelsevy
+
+⚠️ Ingen applikationslogik har modifierats.
+Allt arbete i denna examination är gjort i test- och CI-kod.
 
 🧪 Tester
-
-Projektet innehåller tester skrivna med:
+Testverktyg
 
 Vitest
 
 React Testing Library
 
-Mock Service Worker (MSW) för mockade API-anrop
+Mock Service Worker (MSW)
 
-Typer av tester som finns:
-
-Integrationstester för bokningsflödet
-
-Tester för navigation mellan vyer
-
-Tester som verifierar korrekt rendering baserat på session storage
-
-Testfilerna finns i:
-
+Teststruktur
 strajk-bowling/src/__tests__/
+├── integration/
+│   ├── BookingFlow.test.jsx
+│   ├── Booking.test.jsx
+│   ├── Navigation.test.jsx
+│   └── Confirmation.test.jsx
+├── helpers/
+│   ├── testHelpers.js
+│   └── mocks/
+│       ├── handlers.js
+│       └── server.js
 
+Teststrategi
 
-Varje test innehåller kommentarer som förklarar vilka acceptanskriterier som uppfylls.
+Tester är uppdelade per User Story
 
-🔁 CI – GitHub Actions
+Varje test innehåller kommentarer som tydligt kopplar till acceptanskriterier
 
-Projektet använder GitHub Actions för Continuous Integration.
+Felmeddelanden (VG-krav) testas i separata tester
 
-Vad som händer:
+Hjälpfunktioner används för att undvika duplicerad testkod
 
-Vid varje push till main körs alla tester automatiskt
+✅ Täckning av User Stories
+US1 – Boka datum, tid, spelare och banor
 
-Om alla tester passerar visas en grön bock ✅
+Val av datum och tid
 
-Workflow-filen finns här:
+Minst en spelare krävs
+
+Banor anpassas efter antal spelare
+
+Felmeddelanden för saknade fält
+
+Felmeddelande vid för många spelare per bana
+
+US2 – Skostorlek per spelare
+
+Ange skostorlek för varje spelare
+
+Ändra skostorlek
+
+Fel om skostorlek saknas
+
+Fel om antal skor inte matchar antal spelare
+
+US3 – Ta bort skostorlek
+
+Ta bort skofält via --knapp
+
+Uppdaterar bokningen korrekt
+
+US4 – Slutföra bokning
+
+Bokning skickas via POST-anrop
+
+API-anrop är mockat med MSW
+
+Bokningsnummer och totalsumma visas
+
+Pris beräknas enligt:
+
+120 kr / spelare
+
+100 kr / bana
+
+US5 – Navigation & bekräftelsevy
+
+Navigation mellan bokning och bekräftelse
+
+Visar text om ingen bokning finns
+
+Visar bokning om den finns i sessionStorage
+
+🔁 Continuous Integration – GitHub Actions
+
+Projektet använder GitHub Actions för automatiserad testkörning.
+
+CI-flöde
+
+Alla tester körs automatiskt vid push till main
+
+Misslyckade tester stoppar bygget
+
+Lyckade tester visas med grön bock ✅
+
+Workflow-fil:
 
 .github/workflows/tests.yml
 
+
+GitHub Actions visar endast tiden från att workflowet skapades –
+det representerar inte den totala arbetstiden för uppgiften.
+
 ▶️ Köra projektet lokalt
-1. Klona repot
-git clone https://github.com/MagdalenaVurmo/CI-CD-individuell-exam.git
-
-2. Gå in i projektet
-cd CI-CD-individuell-exam/strajk-bowling
-
-3. Installera beroenden
+Installera och starta applikationen
+cd strajk-bowling
 npm install
-
-4. Starta utvecklingsserver
 npm run dev
 
-▶️ Köra tester lokalt
+Köra tester lokalt
 cd strajk-bowling
 npm run test:run
 
-✅ Uppfyllda krav (Godkänt)
-
-✔ Tester skrivna med React Testing Library
-
-✔ Mockade API-anrop med MSW
-
-✔ GitHub Actions kör tester vid push till main
-
-✔ Alla tester går igenom (grön bock)
-
-✔ Kommentarer i tester som kopplar till acceptanskriterier
-
-✔ Ingen modifiering av applikationslogik (endast tester)
-
 👩‍🎓 Student
 
-Namn: Magdalena
-Kurs: CI/CD / Test
+Namn: Magdalena 
+Kurs: CI/CD & Test
 Skola: Folkuniversitetet
 
-📎 Repo & CI-status
+🔗 Repository
 
-🔗 GitHub-repo:
-https://github.com/MagdalenaVurmo/CI-CD-individuell-exam
+GitHub-repo:
+👉 https://github.com/MagdalenaVurmo/CI-CD-individuell-exam
 
-💬 Kommentar
+📝 Kommentar
 
-Detta projekt fokuserar på testning och CI snarare än vidareutveckling av funktionalitet. Målet har varit att skapa en stabil testmiljö som automatiskt verifierar att applikationen fortsätter fungera korrekt vid framtida ändringar.
+Denna examination fokuserar på testning, kvalitetssäkring och CI snarare än vidareutveckling av funktionalitet.
+Målet har varit att skapa en stabil testmiljö som säkerställer att applikationen fortsätter fungera korrekt vid framtida ändringar.
