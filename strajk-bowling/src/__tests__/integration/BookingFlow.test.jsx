@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 
-// helpes to fill complete booking form
+
 export const fillBookingForm = async (user, players, lanes) => {
   await user.type(screen.getByLabelText(/date/i), "2025-12-20");
   await user.type(screen.getByLabelText(/time/i), "20:00");
@@ -18,7 +18,7 @@ export const fillBookingForm = async (user, players, lanes) => {
   }
 };
 
-// helpes to fill booking form without shoes
+
 export const fillBookingFormWithoutShoes = async (
   user,
   players,
@@ -30,7 +30,6 @@ export const fillBookingFormWithoutShoes = async (
   await user.type(screen.getByLabelText(/lanes/i), lanes.toString());
 };
 
-// helpes to add shoes
 export const addShoes = async (user, shoeSizes) => {
   const addShoeButton = screen.getByRole("button", { name: "+" });
 
