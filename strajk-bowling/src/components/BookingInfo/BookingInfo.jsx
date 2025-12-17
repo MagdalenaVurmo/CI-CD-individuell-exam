@@ -1,9 +1,11 @@
+
 import "./BookingInfo.scss";
 
 import Input from "../Input/Input";
 
 function BookingInfo({ updateBookingDetails }) {
   return (
+     //added and 'name' on input to get correct between label and input
     <section className="booking-info">
       <header>
         <h2 className="booking-info__heading">When, WHAT & Who</h2>

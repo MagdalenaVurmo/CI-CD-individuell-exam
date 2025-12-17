@@ -13,6 +13,7 @@ function Confirmation() {
     JSON.parse(sessionStorage.getItem("confirmation"));
 
   return (
+    //added 'name' on input to get correkt between label and input
     <section className="confirmation">
       <Navigation />
       <Top title="See you soon!" />
@@ -22,6 +23,7 @@ function Confirmation() {
             label="When"
             type="text"
             customClass="confirmation__input"
+            name='when'
             defaultValue={confirmation.when.replace("T", " ")}
             disabled="disabled"
           />
@@ -29,6 +31,7 @@ function Confirmation() {
             label="Who"
             type="text"
             customClass="confirmation__input"
+            name='people'
             defaultValue={confirmation.people}
             disabled="disabled"
           />
@@ -36,6 +39,7 @@ function Confirmation() {
             label="Lanes"
             type="text"
             customClass="confirmation__input"
+            name='lanes'
             defaultValue={confirmation.lanes}
             disabled="disabled"
           />
@@ -43,6 +47,7 @@ function Confirmation() {
             label="Booking number"
             type="text"
             customClass="confirmation__input"
+            name='bookingId'
             defaultValue={confirmation.bookingId}
             disabled="disabled"
           />
